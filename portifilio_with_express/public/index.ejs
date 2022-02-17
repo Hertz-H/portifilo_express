@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+</head>
+<body>
+<div class="container">
+<!-- End header Section -->
+<%- include('./includes/header.ejs')%>
+   
+<!-- End header Section -->
+    <main>
+<!-- Start home Section -->
+        <%- include('./includes/landing.ejs')%>
+   
+<!-- End home Section -->
+ 
+<!-- Start skills Section -->
+<%- include('./includes/skills.ejs')%>
+ <!-- End skills Section -->
+       
+<!-- Start Services Section -->
+<%- include('./includes/Services.ejs')%>
+<!-- End Services Section -->
+     
+<!--  Start Experience Section -->
+<%- include('./includes/experience.ejs')%>
+<!-- End Experience Section -->
+      
+<!-- Start portifilo Section -->
+<%- include('./includes/portifilo.ejs')%>
+<!-- End portifilo Section -->
+ <!-- Start contact Section -->
+ <%- include('./includes/contact.ejs')%>
+<!-- End contact Section -->
+        
+    </main>
+    <%- include('./includes/footer.ejs')%>
+</div>
+<script>
+    var burger_icon =document.getElementById("burger_icon");
+    var left_to_right_menu =document.querySelector(".left_to_right_menu");
+    var  burger_menue__x =document.querySelector(".left_to_right_menu");
+    var to_top =document.querySelector(".to_top");
+    var name  =document.getElementById("name");
+    var email  =document.getElementById("email");
+    var message  =document.getElementById("message");
+    var affect_img=document.getElementById("affect_img");
+    affect_img.onmouseenter= function(){
+        affect_img.style.transitionDuration="2s";
+        affect_img.style.transform="scale(1.1)";
+        
+        }    
+        affect_img.onmouseleave= function(){
+        affect_img.style.transform="scale(1)";
+        }    
+        
+    burger_icon.addEventListener('click',()=>{
+        
+        left_to_right_menu.style.right="0";
+    });
+    burger_menue__x.addEventListener('click',()=>{
+        
+        left_to_right_menu.style.right="-100vw";
+    });
+
+
+     // scroll button
+      
+     
+     document.onscroll= function(){
+                if(document.body.scrollTop>100||document.documentElement.scrollTop>100){
+                    to_top.style.opacity="1";
+                   
+                }
+                else{
+                    to_top.style.opacity="0";
+                    
+                }
+
+        }
+        to_top.onclick=function(){
+            if(to_top.style.opacity==1){
+                
+                document.documentElement.scrollTop=0;
+                document.body.scrollTop=0;
+                
+                
+            }
+        }
+//validation; 
+    var name1=document.getElementById("name"); 
+    var Email1=document.getElementById("email");
+    var message1=document.getElementById("message");   
+    var phone=document.getElementById("phone");
+
+    function validateEmail(elementValue){      
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        return emailPattern.test(elementValue); 
+         }
+ 
+Email1.addEventListener('keyup',()=>{
+var email_test=validateEmail(Email1.value);
+ console.log(" name "+ email_test);
+ 
+if( email_test==false){
+    Email1.style.outlineColor="red";
+
+}
+else{
+    Email1.style.outlineColor="green";
+}
+
+});
+
+
+    function name_validate(elementValue){      
+        var nPattern = /^[a-zA-Z]{3,9}$/;
+        return nPattern.test(elementValue); 
+    }
+ 
+ 
+ name1.addEventListener('keyup',()=>{
+var name_test=name_validate(name1.value);
+ console.log(" name "+name_test);
+ 
+if( name_test==false){
+    name1.style.outlineColor="red";
+
+}
+else{
+    name1.style.outlineColor="green";
+}
+
+});
+
+function validatePhone(elementValue){ 
+      var phonePattern=/^[0-9]+$/;
+    var isNum=phonePattern.test(elementValue); 
+    if(isNum){
+        if(elementValue.length==9){
+            var first_part=elementValue.slice(0,3);
+            console.log(first_part);
+            console.log(elementValue);
+           
+                return  first_part=="777";
+            }
+        }
+        
+        return false;
+    }
+phone.addEventListener('keyup',()=>{
+
+var phone_test=validatePhone(phone.value);
+console.log(phone_test);
+if( phone_test==false){
+    phone.style.outlineColor="red";
+
+}
+else{
+    phone.style.outlineColor="green";
+}
+
+});
+
+function message_validate(elementValue){      
+   var message = /^[a-zA-Z]{21,}$/;
+   return message.test(elementValue); 
+ }
+ 
+
+ message1.addEventListener('keyup',()=>{
+var message_test=message_validate(message1.value);
+ console.log(" name "+message_test);
+ 
+if( message_test==false){
+    message1.style.outlineColor="red";
+
+}
+else{
+    message1.style.outlineColor="green";
+}
+
+});
+ 
+var btn=document.getElementById("btn");
+    btn.onclick=function(){
+        document.querySelector('link[rel="stylesheet"]').href="css/darkmode2.css";
+    
+    }
+    var btn=document.getElementById("btn");
+    btn_light==document.getElementById("btn_light");
+    btn.onclick=function(){
+        document.querySelector('link[rel="stylesheet"]').href="css/darkmode2.css";
+        btn_light.classlist.remove(".active");
+        btn.classlist.add(".active");
+    
+    }
+   
+    btn_light.onclick=function(){
+        document.querySelector('link[rel="stylesheet"]').href="css/style.css";
+        btn.classlist.remove(".active");
+        btn_light.classlist.add(".active");
+    
+    }
+ 
+
+</script>
+</body>
+</html>
